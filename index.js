@@ -68,10 +68,11 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
+function inning(){
     return Math.floor(Math.random() * 3);
 }
 
+console.log(inning());
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -91,11 +92,13 @@ function finalScore(inningCB, innings){
   let away = 0;
   let home = 0
   for(let i = 0; i < innings; i++){
-    away += inningCB()
-    home += inningCB()
+    away += inningCB();
+    home += inningCB();
   }
   return {Away: away, Home: home};
 }
+
+console.log(finalScore(inning, 5));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
@@ -106,6 +109,7 @@ function getInningScore(inningCB) {
   return {Away:  inningCB(), Home:  inningCB()}
 }
 
+console.log(getInningScore(inning));
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -148,11 +152,39 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inningScoreCB, inningCB, innings) {
+  // make a new array to store the values for each inning
+  const inningsArray = [];
+  
+  //loop through the required number of innings
+  for(let i = 0; i < innings; i++){
+    //push the score for each inning to our inningsArray
+    inningsArray.push(inningScoreCB(inningCB));
+  }
+  // we will reformat the data from inningsArray to match the project requirements and add on the final score into inningsArrayFormated. we will return this array at the end.
+  const inningsArrayFormated = []
+  // delcare a variable finalScore to hold the values for home and away as we loop through them in the next step
+  let finalScore = {away: 0, home: 0}
+  // loop through inningsArrat to tally the final score, reformating into inningsArrayFormated as we go
+  for(let i = 0; i < inningsArray.length; i++){
+    //add the scores for home and away to finalScore each iteration
+    finalScore.away += inningsArray[i]['Away'];
+    finalScore.home += inningsArray[i]['Home'];
+    //reformat into inningsArrayFormated while we're at it
+    inningsArrayFormated.push( `Inning ${i + 1}: Away ${inningsArray[i]['Away']} - Home ${inningsArray[i]['Home']}`);
+  }
+  //check for a tie, push the appropriately formated option for final score to inningsArrayFormated 
+  if(finalScore.home !== finalScore.away){
+    inningsArrayFormated.push(`Final Score: Away ${finalScore.away} - Home ${finalScore.home}`);
+  } else {
+    inningsArrayFormated.push(`This game will require extra innings: Away ${finalScore.away} - Home ${finalScore.home}`);
+
+  }
+  //return the array containg the formated score for each inning with the final score at the end
+  return inningsArrayFormated;
 }
 
-
+console.log(scoreboard(getInningScore,inning,9));
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
