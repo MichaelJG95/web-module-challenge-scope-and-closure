@@ -186,7 +186,6 @@ function scoreboard(inningScoreCB, inningCB, innings) {
 
 console.log(scoreboard(getInningScore,inning,9));
 
-
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo(){
   console.log('its working');

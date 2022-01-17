@@ -61,6 +61,7 @@ You will be running your tests in one terminal and debugging in the other. As yo
 Edit the `ReadMe` file with your answers to the questions below.
 
 1. In your own words, define closure (1-2 sentences).
+
 - Closure is when an inner function accesses information in an outer function
 
 2. Study the following code, then answer the questions below.
@@ -84,10 +85,15 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
 - there is an anonymous function contained within the function personalDice. This anonymous function uses closure to access the value passed into the parent function personalDice on invoke.
 
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+- dansRoll will always pass "Dan" to the function personalDice's name parameter the value of newRoll will change according to Math.random() even though it was declared with const it only exists in the function so it will be different for each invoke
+
 c. What is the lexical scope of `newRoll`? 
+- block scope
 
 
 ### Task 3 - Stretch Goals
@@ -105,6 +111,8 @@ addSix(21); // returns 27
 ```
 
 2. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
+
+- object-oriented programming is intended to model real world objects and behaviors, this can make object oriented code more readable but can also due can be more prone to unexpexted problems. functional programming can be better for avoiding possible unpredictable behaviors of OOP but it also can be much less intuitively readable.
 
 ## Resources
 
